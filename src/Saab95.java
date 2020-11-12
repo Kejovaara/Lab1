@@ -1,33 +1,37 @@
 import java.awt.*;
 
-public class Saab95 extends Vehicle{
-    
+/**
+ * This class specified the vehicle Saab95.
+ *
+ *   @author André Kejovaara
+ *   @author Ingrid Nistal Sköldberg
+ *   @author Shada Al-Wakkal
+ *
+ *   @version 1.0
+ */
+public class Saab95 extends VehicleTurbo{
+
+    /**
+     * Sets value for the vehicle Volvo240.
+     */
     public Saab95(){
-        super(2, 125, Color.red, "Saab95", true);
+        super(2, 125, Color.red, "Saab95",false, 0, 0);
         stopEngine();
     }
 
-    public double speedFactor(){
-        double turbo = 1;
-        if(hasTurbo) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
-    }
-
+    /**
+     * Increases the speed of the Saab95.
+     * @param amount Amount to increase.
+     */
     public void incrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
+    /**
+     * Decreases the speed of the Saab95.
+     * @param amount Amount to increase.
+     */
     public void decrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
-    }
-    
-    // TODO fix this method according to lab pm
-    public void gas(double amount){
-        incrementSpeed(amount);
-    }
-
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        decrementSpeed(amount);
     }
 }
