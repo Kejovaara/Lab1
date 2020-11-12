@@ -24,7 +24,11 @@ public class Saab95 extends VehicleTurbo{
      * @param amount Amount to increase.
      */
     public void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        if(currentSpeed >= enginePower){
+            currentSpeed = enginePower;
+        }else{
+            currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        }
     }
 
     /**
@@ -32,6 +36,10 @@ public class Saab95 extends VehicleTurbo{
      * @param amount Amount to increase.
      */
     public void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        if(currentSpeed <= 0){
+            currentSpeed = 0;
+        }else {
+            currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        }
     }
 }

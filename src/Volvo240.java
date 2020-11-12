@@ -25,7 +25,11 @@ public class Volvo240 extends VehicleTrim{
      * @param amount Amount to increase.
      */
     public void incrementSpeed(double amount){
-	    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+	    if(currentSpeed >= enginePower){
+            currentSpeed = enginePower;
+        }else {
+            currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+        }
     }
 
     /**
@@ -33,6 +37,10 @@ public class Volvo240 extends VehicleTrim{
      * @param amount Amount to decrease.
      */
     public void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        if(currentSpeed <= 0){
+            currentSpeed = 0;
+        }else {
+            currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        }
     }
 }
